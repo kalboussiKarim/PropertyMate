@@ -3,9 +3,18 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
 import icons from "@/constants/icons";
+import { login } from "@/lib/appwrite";
+import { Alert } from "react-native";
 
 const SignIn = () => {
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    const redult = await login();
+    if (redult) {
+      console.log("Login Success");
+    } else {
+      Alert.alert("Login Failed");
+    }
+  };
 
   return (
     <SafeAreaView className="bg-white h-full">
